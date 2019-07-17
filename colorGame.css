@@ -28,7 +28,10 @@ h1
 	text-transform: uppercase;
 }
 
-span
+#stripe
 {
-	color: white;
+	background: white;
+	height: 30px;
+	text-align: center;
+	color: black;
 }

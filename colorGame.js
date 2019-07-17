@@ -10,10 +10,50 @@ colorDisplay.textContent=pickedcolor;
 
 var messageDisplay=document.getElementById("message");
 
-var easyBtn=document.querySelector("#easyBtn");
-var hardBtn=document.querySelector("#hardBtn");
+var modeButtons=document.querySelectorAll(".mode");
 
-easyBtn.addEventListener("click", function(){
+fot(var i=0;i<modeButtons.length;i++)
+{
+	modeButtons[i].addEventListener("click",function(){
+		modeButtons[0].classList.remove("selected");
+		modeButtons[1].classList.remove("selected");
+		this.classList.add("selected");
+		this.textContent==="Easy" ? numofsquares=3 : numofsquares=6;
+		reset();
+	});
+}
+
+function reset()
+{
+	colors=generateRandomColors(numofsquares);
+
+	//pick a new random color from array
+	pickedcolor=pickColor();
+
+	resetButtton.textContent="New Colors";
+
+	//change colorDislpay to match picked color
+	colorDisplay.textContent=pickedcolor;  
+
+	//change colors of the square
+	for(var i=0; i<squares.length; i++)
+	{
+		if(colors[i])
+		{
+			squares[i].style.display="block";
+			squares[i].style.backgroundColor=colors[i];
+		}
+		else
+		{
+			squares[i].style.display="none";
+		}
+		squares[i].style.backgroundColor=colors[i]; 
+	}
+	document.querySelector("h1").style.backgroundColor="steelblue";
+	messageDisplay.textContent=" ";
+}
+
+/*easyBtn.addEventListener("click", function(){
 	easyBtn.classList.add("selected");
 	hardBtn.classList.remove("selected");
 	numofsquares=3;
@@ -46,25 +86,11 @@ hardBtn.addEventListener("click", function(){
 		squares[i].style.display="block";
 	}
 
-});
+});*/
 
 var resetButtton=document.querySelector("#reset");
 resetButtton.addEventListener("click",function(){
-	//generate all new colors
-	colors=generateRandomColors(numofsquares);
-
-	//pick a new random color from array
-	pickedcolor=pickColor();
-
-	//change colorDislpay to match picked color
-	colorDisplay.textContent=pickedcolor;  
-
-	//change colors of the square
-	 for(var i=0; i<squares.length; i++)
-	 {
-	 	squares[i].style.backgroundColor=colors[i]; 
-	 }
-	 document.querySelector("h1").style.backgroundColor="steelblue";
+	reset();
 });
 
 for(var i=0; i<squares.length; i++)

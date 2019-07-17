@@ -12,7 +12,7 @@ var messageDisplay=document.getElementById("message");
 
 var modeButtons=document.querySelectorAll(".mode");
 
-fot(var i=0;i<modeButtons.length;i++)
+for(var i=0;i<modeButtons.length;i++)
 {
 	modeButtons[i].addEventListener("click",function(){
 		modeButtons[0].classList.remove("selected");
